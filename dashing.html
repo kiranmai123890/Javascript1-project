@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Builder</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f9fbfd;
+      color: #1f1f1f;
+      padding: 0 40px 40px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 50px;
+      margin-left: 40px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    .build-btn {
+      background-color: black;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .content {
+      max-width: 500px;
+      margin-right: 40px;
+    }
+
+    .resume-count {
+      color: gray;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .subtext {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn.primary {
+      background-color: black;
+      color: white;
+    }
+
+    .stats {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .highlight {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+    }
+
+    .green { color: #4CAF50; }
+    .orange { color: #FFA500; }
+
+    .preview img {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-right: 250px;
+      animation: slideInRight 1s ease-out forwards;
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    section {
+      padding: 60px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      font-size: 16px;
+      color: #555;
+      max-width: 800px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .features, .testimonials {
+      margin-top: 30px;
+    }
+
+    .features ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+
+    .testimonial {
+      background: #fff;
+      border-left: 4px solid #007bff;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .testimonial p {
+      margin: 0;
+    }
+
+    footer {
+      background-color: #fff;
+      padding: 30px 0;
+      text-align: center;
+      margin-top: 60px;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.05);
+    }
+
+    footer p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      font-size: 13px;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    .section-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.section-flex .text {
+  flex: 1 1 55%;
+}
+
+.section-flex .image {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.section-flex img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+  </style>
+</head>
+<body>
+
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="image/lloogoo.png" alt="logo" style="width: 100px; height: 70px;">
+    </div>
+    <div class="nav-right">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+     <span id="sellerName"></span>
+
+      <button class="build-btn" onclick="window.location.href='dashboard.html'">Build my resume</button>
+    </div>
+  </div>
+
+  <div class="main-container" id="home">
+    <div class="content">
+      <p class="resume-count">226,911 resumes created today</p>
+      <h1>Write your story with the ultimate resume builder</h1>
+      <p class="subtext">Only 2% of resumes win. Yours will be one of them. Let’s build you a resume that works.</p>
+      <div class="buttons">
+        <button class="btn primary" onclick="window.location.href='dashboard.html'">Create my resume</button>
+        
+ <!-- Upload Resume Button -->
+       
+      </div>
+      <div class="stats">
+        <div><span class="highlight green">39%</span><br>more likely to get hired</div>
+        <div><span class="highlight orange">8%</span><br>better pay with your next job</div>
+      </div>
+    </div>
+    <div class="preview">
+      <img src="image/re-resume.png" alt="Resume preview" style="width: 350px;" />
+    </div>
+  </div>
+
+  <section id="home-details" class="section-flex">
+  <div class="text">
+    <h2>Why Choose Our Resume Builder?</h2>
+    <p>We provide a seamless, intuitive interface to help you create professional resumes in minutes. Our templates are designed by recruiters, tailored for applicant tracking systems (ATS), and focused on results.</p>
+
+    <div class="features">
+      <h3>Features:</h3>
+      <ul>
+        <li>ATS-optimized templates</li>
+        <li>Live preview of your resume</li>
+        <li>Multiple download options (PDF, Word)</li>
+        <li>One-click customization</li>
+      </ul>
+    </div>
+
+    <div class="testimonials">
+      <h3>What Users Are Saying:</h3><br><br>
+      <div class="testimonial">
+        <p><strong>“I landed 3 interviews in a week. This builder really works!”</strong> — Anjali S.</p>
+      </div>
+      <div class="testimonial">
+        <p><strong>“Simple to use and super effective. 5 stars!”</strong> — Mark L.</p>
+      </div>
+      <div class="testimonial">
+        <p><strong>“The live preview and templates made everything so easy. Highly recommend!”</strong> — Priya D.</p>
+      </div>
+      <div class="testimonial">
+        <p><strong>“I’ve used other tools before, but this one stands out. It’s clean, fast, and powerful.”</strong> — Alex R.</p>
+      </div>
+    </div>
+  </div>
+  <div class="image">
+    <img src="image/4.webp" alt="Features Image" style="width: 400px;">
+  </div>
+</section>
+
+<section id="about" class="section-flex">
+  <div class="text">
+    <h2>About Resume Builder</h2>
+    <p>We are passionate about empowering job seekers with tools that help them stand out. Our team combines technology and recruiting expertise to bring you a platform that simplifies resume creation.</p>
+    <p>Whether you're starting your career, making a change, or climbing the ladder, we’re here to support your journey.</p>
+
+    <h3>How It Works:</h3>
+    <ul>
+      <li>Select from dozens of proven templates</li>
+      <li>Input your details or import an existing resume</li>
+      <li>Customize styles, fonts, and layout</li>
+      <li>Download and apply with confidence!</li>
+    </ul>
+  </div>
+  <div class="image">
+    <img src="image/5.webp" alt="About Image" style="width: 400px";>
+  </div>
+</section>
+
+
+  <footer>
+    <p>&copy; 2025 Resume Builder. All rights reserved. | Designed with care to help you succeed.</p>
+    <p>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="mailto:support@resumebuilder.com">Contact</a>
+    </p>
+  </footer>
+  
+
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    sections.forEach(section => observer.observe(section));
+
+      // Upload file handler
+    document.getElementById('resume-upload').addEventListener('change', function () {
+      if (this.files.length > 0) {
+        alert("Uploaded: " + this.files[0].name);
+      }
+    });
+  </script>
+  <script type="module" src="profile.js"></script>
+
+</body>
+</html>

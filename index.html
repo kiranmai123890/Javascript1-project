@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-image: url('image/6.avif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: zoomBackground 15s infinite;
+    }
+
+    @keyframes zoomBackground {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      perspective: 1000px;
+      border-radius: 10px;
+    }
+
+    #toggle {
+      display: none;
+    }
+
+    .form-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
+
+    #toggle:checked ~ .form-container {
+      transform: rotateY(180deg);
+    }
+
+    .form {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 40px;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-form {
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
+
+    .signup-form {
+      transform: rotateY(180deg);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    input {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid black;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    input:focus {
+      border-color: black;
+      outline: none;
+    }
+
+    button {
+      padding: 12px;
+      background: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .toggle-label {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: black;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .toggle-label span {
+      font-weight: bold;
+    }
+
+    .toggle-label:hover {
+      background-color: #333;
+    }
+    .quote-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 30px 40px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      /* background: #f5f7fa; */
+      z-index: 1000;
+      /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); */
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeSlideIn 1.2s ease-out forwards;
+    }
+
+    .quote-text {
+      font-size: 1.5rem;
+      color: black;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .quote-accent {
+      color: white;
+      font-weight: 600;
+    }
+
+    .resume-word {
+      display: inline-block;
+      font-weight: bold;
+      color: white;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      animation: popIn 1s ease-out 1.2s forwards;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+  <link rel="icon" type="image/x-icon" href="path/to/favicon.ico">
+
+</head>
+<body>
+  <div class="quote-container">
+    <p class="quote-text">
+      <strong>
+        <!-- <span class="quote-accent">New beginnings</span> or <span class="quote-accent">bold milestones</span> — your experience deserves to <span style="color: black;">shine</span> -->
+   <span class="quote-accent">One resume</span> . <span class="quote-accent">Infinite paths</span> . Your journey starts <span style="color: black;">here</span>.
+        <br>   <span class="resume-word">RESUME</span>
+      </strong>
+    </p>
+  </div>
+
+  <div class="container">
+    <input type="checkbox" id="toggle">
+    <div class="form-container">
+      <!-- Login Form -->
+      <div class="form login-form">
+        <h2>Login</h2>
+        <form id="login-form">
+          <input type="email" id="login-email" required placeholder="Email" />
+          <input type="password" id="login-password" required placeholder="Password" />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+
+      <!-- Sign Up Form -->
+      <div class="form signup-form">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          
+          <input type="text" id="signup-username" required placeholder="username" />
+
+          <input type="email" id="signup-email" required placeholder="Email" />
+          <input type="password" id="signup-password" required placeholder="Password" />
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <label for="toggle" class="toggle-label">Switch to <span>Signup/Login</span></label>
+  </div>
+
+  <script type="module" src="login.js"></script>
+</body>
+</html>

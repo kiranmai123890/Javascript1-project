@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Builder</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f9fbfd;
+      color: #1f1f1f;
+      padding: 0 40px 40px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 0;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .logo span {
+      color: #007bff;
+      margin-left: 5px;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 50px;
+      margin-left: 40px;
+      /* width: 0px; */
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .build-btn {
+      background-color: black;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .build-btn:hover {
+      background-color: black;
+    }
+
+    .main-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .content {
+      max-width: 500px;
+      margin-right: 40px;
+    }
+
+    .resume-count {
+      color: gray;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .subtext {
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn.primary {
+      background-color: black;
+      color: white;
+    }
+
+    .btn.primary:hover {
+      background-color: black;
+    }
+
+    .btn.secondary {
+      background-color: #f0f0f0;
+      color: #333;
+      border: 1px solid #ccc;
+    }
+
+    .btn.secondary:hover {
+      background-color: #e0e0e0;
+    }
+
+    .stats {
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .highlight {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+    }
+
+    .green {
+      color: #4CAF50;
+    }
+
+    .orange {
+      color: #FFA500;
+    }
+
+    .preview img {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    @keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.preview img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-right: 250px;
+
+  /* New animation */
+  animation: slideInRight 1s ease-out forwards;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="image/lloogoo.png" alt="logo" style="width: 100px; height: 70px;">
+      <!-- resume<span>.io</span> -->
+    </div>
+    <div class="nav-right">
+      <a href="#" class="nav-link">My Account</a>
+      <button class="build-btn" onclick="window.location.href='dashboard.html'">Build my resume</button>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="content">
+      <p class="resume-count">226,911 resumes created today</p>
+      <h1>Write your story with the ultimate resume builder</h1>
+      <p class="subtext">Only 2% of resumes win. Yours will be one of them. Let’s build you a resume that works.</p>
+      <div class="buttons">
+        <button class="btn primary" onclick="window.location.href='dashboard.html'">Create my resume</button>
+        
+      </div>
+      <div class="stats">
+        <div><span class="highlight green">39%</span><br>more likely to get hired</div>
+        <div><span class="highlight orange">8%</span><br>better pay with your next job</div>
+      </div>
+    </div>
+    <div class="preview">
+      <img src="image/re-resume.png" alt="Resume preview" style="margin-right: 220px; width: 400px;" />
+    </div>
+  </div>
+
+  <script>
+    function uploadResume() {
+      alert("Upload functionality coming soon!");
+    }
+  </script>
+
+</body>
+</html>
